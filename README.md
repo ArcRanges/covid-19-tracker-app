@@ -1,5 +1,11 @@
-# covid19app
+# COVID-19 Tracker App
 covid-19 tracker and news for world (IOS and Android)
+
+Stack:
+- React Native
+- Expo
+- Youtube DATA API V3
+- News API from newsapi.org
 
 ## SCREENSHOTS
 
