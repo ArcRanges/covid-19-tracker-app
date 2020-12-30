@@ -26,7 +26,7 @@ import {
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export default function VidsScreen({navigation}) {
-  const API_KEY = 'AIzaSyBm_M_cKZp9eIXKemMa7Jn2ds6BKonGJUg';
+  const API_KEY = 'AIzaSyC3RdrDJImZN9qZ_AjwTMN8QVFcL05IS8E';
   const PLAYLIST_ID = 'PL9S6xGsoqIBU2V6AZYGlJwZRAFJ3YDreb';
   const MAX_RESULTS = 10;
 
@@ -74,7 +74,7 @@ export default function VidsScreen({navigation}) {
   }
 
   const fetchData = () => {
-    console.log("requesting data ........");
+    // console.log("requesting data ........");
     setLoading(true)
     var requestOptions = {
       method: 'GET',
@@ -82,7 +82,8 @@ export default function VidsScreen({navigation}) {
     };
 
     let URL = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=${MAX_RESULTS}&playlistId=${PLAYLIST_ID}&pageToken=${pageToken}&key=${API_KEY}`
-
+    
+    // console.log(URL);
     fetch(URL, requestOptions)
     .then(response => response.json())
     .then(result => {
@@ -159,29 +160,26 @@ export default function VidsScreen({navigation}) {
     return null;
   };
 
+
   return (
-    <View style={styles.container}>
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          onRefresh={reloadData}
-          refreshing={loading}
-          ListFooterComponent={renderFooter}
-          onEndReachedThreshold={0.2}
-          onEndReached={loadMoreVideos}
-        />
-      </SafeAreaView>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        onRefresh={reloadData}
+        refreshing={loading}
+        ListFooterComponent={renderFooter}
+        onEndReachedThreshold={0.2}
+        onEndReached={loadMoreVideos}
+      />
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    marginTop: 5,
-    marginBottom: 5
+    paddingTop: 5,
   },
   title: {
     fontSize: 26,
@@ -193,7 +191,7 @@ const styles = StyleSheet.create({
   videoBox: {
     backgroundColor: '#fff',
     margin: 0,
-    marginBottom: 10,
+    marginVertical: 10,
     padding: 30,
     width: SCREEN_WIDTH - 20,
     paddingBottom: 50,
