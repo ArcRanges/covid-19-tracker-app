@@ -1,0 +1,14 @@
+{
+  "debug_mode": false,
+  "local_ip": "localhost:8000",
+  "location": {
+    "value": "United States",
+    "code": "US"
+  },
+  "news": {
+    "API_KEY": "9f176a50177743d3b1bd3ec5725b1f84"
+  },
+  "cyberpurge": {
+    "API_KEY": "1cba6193-a791-46c4-bf41-54c07b58b466"
+  }
+}

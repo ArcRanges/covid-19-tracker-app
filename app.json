@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "COVID Global",
+    "slug": "covid-global",
+    "scheme": "covid-global",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo-white.png",
+    "splash": {
+      "image": "./assets/splash-covid.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.ohmcodescorp.CovidGlobal",
+      "buildNumber": "1.0.0",
+      "supportsTablet": false,
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses this permission to load the statistics for the current location.",
+        "NSLocationWhenInUseUsageDescription": "This app uses this permission to load the statistics for the current location.",
+        "NSLocationAlwaysUsageDescription": "This app uses this permission to load the statistics for the current location."
+      }
+    },
+    "android": {
+      "package": "com.ohmcodescorp.CovidGlobal",
+      "versionCode": 1
+    },
+    "privacy": "unlisted"
+  }
+}
