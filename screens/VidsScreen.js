@@ -26,6 +26,7 @@ import {
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export default function VidsScreen({navigation}) {
+  // const API_KEY = 'AIzaSyBghiVPq9qzUMhVFvICUWRGkSXlFZK_NsE';
   const API_KEY = 'AIzaSyC3RdrDJImZN9qZ_AjwTMN8QVFcL05IS8E';
   const PLAYLIST_ID = 'PL9S6xGsoqIBU2V6AZYGlJwZRAFJ3YDreb';
   const MAX_RESULTS = 10;
@@ -35,6 +36,7 @@ export default function VidsScreen({navigation}) {
   const [page, setPage] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
   const [pageToken, setPageToken] = useState('')
+  const [quotaReached, setQuotaReached] = useState(false);
 
   const reloadData = () => {
     setData([])
@@ -88,6 +90,14 @@ export default function VidsScreen({navigation}) {
     .then(response => response.json())
     .then(result => {
       // console.log(result);
+      if (result.error) {
+        if (result.error.code == 403) {
+          setQuotaReached(true)
+          setLoading(false)
+        }
+        return;
+      }
+
       let newData = data.concat(result.items)
       setData(newData)
       setPageToken(result.nextPageToken)
@@ -97,7 +107,7 @@ export default function VidsScreen({navigation}) {
       }
     }).catch(error => {
       console.log('error', error);
-        setLoading(false)
+      setLoading(false)
     });
   }
 
@@ -160,6 +170,16 @@ export default function VidsScreen({navigation}) {
     return null;
   };
 
+    
+  if (quotaReached || data.length == 1) {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
+        <Text style={{textAlign: 'center', }}>
+          Sorry. {'\n'}Daily quota has been reached. {'\n'}Try again tomorrow.
+        </Text>
+      </View>
+    )
+  }
 
   return (
     <SafeAreaView style={styles.container}>
