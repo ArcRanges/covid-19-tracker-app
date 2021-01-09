@@ -3,6 +3,7 @@
     "name": "COVID Global",
     "slug": "covid-global",
     "scheme": "covid-global",
+    "description": "A simple COVID Tracker App with the sole purpose of tracking wordlwide cases and receiving latest news and updates regarding COVID.",
     "platforms": [
       "ios",
       "android",
@@ -39,6 +40,5 @@
       "package": "com.ohmcodescorp.CovidGlobal",
       "versionCode": 1
     },
-    "privacy": "unlisted"
   }
 }

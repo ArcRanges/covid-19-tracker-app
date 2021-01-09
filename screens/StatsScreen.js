@@ -420,7 +420,7 @@ export default function HomeScreen({navigation}) {
           initialRegion={{
           latitude: geolocation.coords.latitude,
           longitude: geolocation.coords.longitude,
-          latitudeDelta: 0.0922,
+          latitudeDelta: 80,
           longitudeDelta: 0.0421
         }}>
           {worldStatsData.map((stat, index) => {
@@ -434,7 +434,7 @@ export default function HomeScreen({navigation}) {
                   latitude: stat.center.latitude,
                   longitude: stat.center.longitude,
                 }}
-                radius={stat.data.TotalConfirmed}
+                radius={stat.data.TotalConfirmed/5}
                 strokeWidth={1}
                 strokeColor='rgba(207, 0, 15, 0.8)'
                 fillColor='rgba(207, 0, 15, 0.8)'
@@ -449,7 +449,7 @@ export default function HomeScreen({navigation}) {
               >
                 <MaterialCommunityIcons name="pin" color={'white'} style={styles.shadow} size={22} />
                 <MapView.Callout>
-                  <View style={{ padding: 10, height: 100, width: 200, }}>
+                  <View style={{ padding: 10, width: 200, marginHorizontal: 'auto' }}>
                     <Text style={{color: 'black', fontWeight: 'bold', textAlign: 'center', marginBottom: 5}}>{stat.data.Country}</Text>
                     <Text style={{color: 'red', textAlign: 'center', marginBottom: 5}}>New Cases Today: +{stat.data.NewConfirmed}</Text>
                     <Text style={{color: 'green', textAlign: 'center', marginBottom: 5}}>Recovered Today: +{stat.data.NewRecovered}</Text>
